@@ -185,6 +185,18 @@ class ListOfPage extends GetView<ListOfPagesController> {
                Get.toNamed(RouteName.subStringWithConcatenationPage);
               },
             ),
+            InkWell(
+              child: _getButton("First Missing Positive"),
+              onTap: () {
+               Get.toNamed(RouteName.firstMissingPositivePage);
+              },
+            ),
+            InkWell(
+              child: _getButton("Wildcard Matching"),
+              onTap: () {
+               Get.toNamed(RouteName.wildcardPage);
+              },
+            ),
             const SizedBox(height: 30)
           ],
         ),

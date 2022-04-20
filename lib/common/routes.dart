@@ -7,6 +7,7 @@ import 'package:demo_project/count_json_object/bindings/count_json_object_bindin
 import 'package:demo_project/divide_two_integers/bindings/divide_two_integers_bindings.dart';
 import 'package:demo_project/duplicate_number/bindings/duplicate_number_bindings.dart';
 import 'package:demo_project/first_and_last_position/bindings/first_and_last_position_bindings.dart';
+import 'package:demo_project/first_missing_positive/bindings/first_missing_positive_bindings.dart';
 import 'package:demo_project/index_of_first_occurrence/bindings/index_of_first_occurrence_bindings.dart';
 import 'package:demo_project/median_of_List/bindings/median_of_List_bindings.dart';
 import 'package:demo_project/remove_element/bindings/remove_element_bindings.dart';
@@ -20,6 +21,7 @@ import 'package:demo_project/sum_of_pairs/bindings/sum_of_pairs_bindings.dart';
 import 'package:demo_project/swap_node_of_list/bindings/swap_node_of_list_bindins.dart';
 import 'package:demo_project/test/bindings/test_bindins.dart';
 import 'package:demo_project/test/presentation/view/drop.dart';
+import 'package:demo_project/wildcard_matching/bindings/wildcard_matching_bindings.dart';
 import 'package:demo_project/zigzag_conversion%20/bindings/zigzag_conversion%20_bindins.dart';
 import 'package:get/get.dart';
 
@@ -37,6 +39,7 @@ import '../count_json_object/presentation/view/count_json_object_view.dart';
 import '../divide_two_integers/presentation/view/divide_two_integers_view.dart';
 import '../duplicate_number/presentation/view/duplicate_number_view.dart';
 import '../first_and_last_position/presentation/view/first_and_last_position_view.dart';
+import '../first_missing_positive/presentation/view/first_missing_positive_view.dart';
 import '../index_of_first_occurrence/presentation/view/index_of_first_occurrence_view.dart';
 import '../list_of_pages/bindings/list_of_pages_bindins.dart';
 import '../list_of_pages/presentation/view/list_of_pages_view.dart';
@@ -59,6 +62,7 @@ import '../sum_of_pair_validation/presentation/view/sum_of_pair_validation_view.
 import '../sum_of_pairs/presentation/view/sum_of_pairs_view.dart';
 import '../swap_node_of_list/presentation/view/swap_node_of_list_view.dart';
 import '../test/presentation/view/test_view.dart';
+import '../wildcard_matching/presentation/view/wildcard_matching_view.dart';
 import '../zigzag_conversion /presentation/view/zigzag_conversion _view.dart';
 
 class RouteName {
@@ -95,6 +99,8 @@ class RouteName {
   static const String indexOfFirstOccurrencePage = "/IndexOfFirstOccurrencePage";
   static const String medianOfListPage = "/MedianOfListPage";
   static const String subStringWithConcatenationPage = "/SubStringWithConcatenationPage";
+  static const String firstMissingPositivePage = "/FirstMissingPositivePage";
+  static const String wildcardPage = "/WildcardPage";
 }
 
 class Routes {
@@ -223,5 +229,13 @@ class Routes {
         page: () => SubStringWithConcatenationPage(),
         name: RouteName.subStringWithConcatenationPage,
         binding: SubStringWithConcatenationBindings()),
+    GetPage(
+        page: () => FirstMissingPositivePage(),
+        name: RouteName.firstMissingPositivePage,
+        binding: FirstMissingPositiveBindings()),
+    GetPage(
+        page: () => WildcardPage(),
+        name: RouteName.wildcardPage,
+        binding:WildcardBindings()),
   ];
 }
