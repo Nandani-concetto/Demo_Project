@@ -72,7 +72,6 @@ class CheckParenthesesPage extends GetView<CheckParenthesesController> {
         print("Pushed Stack");
       }
       if (s[i] == ')' || s[i] == '}' || s[i] == ']') {
-        //stack.push(s[i]);
         if (stack.isEmpty) return "false";
         var temp = stack.pop();
         print("Poped Stack");

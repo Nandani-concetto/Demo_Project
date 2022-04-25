@@ -1,5 +1,6 @@
 import 'dart:core';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import '../controllers/wildcard_matching_controller.dart';
 
@@ -19,7 +20,7 @@ class WildcardPage extends GetView<WildcardController> {
                 child: Column(
               children: [_getTextFieldOfList(), _getTextFieldOfSum()],
             )),
-            _getButton(),
+            _getButton(context),
             _getPrintNewList()
           ],
         ),
@@ -32,6 +33,10 @@ class WildcardPage extends GetView<WildcardController> {
       padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
       child: Center(
         child: TextFormField(
+          keyboardType: TextInputType.text,
+          inputFormatters: <TextInputFormatter>[
+            FilteringTextInputFormatter.allow(RegExp("[a-z]")),
+          ],
           controller: controller.firstController,
           decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
@@ -40,7 +45,9 @@ class WildcardPage extends GetView<WildcardController> {
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(color: Colors.blue)),
-              labelText: "Enter Value"),
+              labelText: "Enter Value",
+            hintText: "Hint:-abcd.."
+          ),
         ),
       ),
     );
@@ -51,6 +58,10 @@ class WildcardPage extends GetView<WildcardController> {
       padding: const EdgeInsets.only(left: 20, right: 20, top: 40),
       child: Center(
         child: TextFormField(
+          keyboardType: TextInputType.text,
+          inputFormatters: <TextInputFormatter>[
+            FilteringTextInputFormatter.allow(RegExp("[a-z*?]")),
+          ],
           controller: controller.secondController,
           decoration: InputDecoration(
               enabledBorder: OutlineInputBorder(
@@ -59,13 +70,15 @@ class WildcardPage extends GetView<WildcardController> {
               focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(10),
                   borderSide: BorderSide(color: Colors.blue)),
-              labelText: "Enter Value"),
+              labelText: "Enter Value",
+              hintText: "Hint:-abcd.."
+          ),
         ),
       ),
     );
   }
 
-  Widget _getButton() {
+  Widget _getButton(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.only(top: 30),
       child: SizedBox(
@@ -74,6 +87,7 @@ class WildcardPage extends GetView<WildcardController> {
         child: ElevatedButton(
           style: ElevatedButton.styleFrom(primary: Colors.grey[700]),
           onPressed: () {
+            FocusScope.of(context).requestFocus(new FocusNode());
             wildcard();
           },
           child: Center(
@@ -85,33 +99,61 @@ class WildcardPage extends GetView<WildcardController> {
   }
 
   wildcard() {
-    var s = controller.firstController.text;
-    print(s);
-    var p = controller.secondController.text;
-    print(p);
-   if(s==p){
-     print(true);
+    var str = controller.firstController.text.split(" ").join("");
+    print(str);
+    var pattern = controller.secondController.text.split(" ").join("");
+    print(pattern);
+    int s = 0, p = 0, match = 0, starIdx = -1;
+    if(str.length>=pattern.length){
+    while (s < str.length) {
+      if (p < pattern.length  && (pattern[p] == '?' || str[s] == pattern[p])){
+        s++;
+        p++;
+      }
+      else if (p < pattern.length&& pattern[p] == '*'){
+        starIdx = p;
+        match = s;
+        p++;
+      }
+      else if (starIdx != -1){
+        p = starIdx + 1;
+        match++;
+        s = match;
+
+      }
+      else {
+        controller.outputList.clear();
+        controller.outputList.add("false");
+       return print(false);
+      }
     }
-   else{
-     if(p.contains("*")) {
-       print(true);
-     }
-     else if(p.contains("?")){
-       for(var i=0;i<p.length;i++){
-         s.contains(p[i]);
-         print("test");
-       }
-     }
-     else{
-       print(false);
-     }
-   }
+    print(true);
+    controller.outputList.clear();
+    controller.outputList.add("true");
+    }
+    else if(pattern=="*"){
+      print(true);
+      controller.outputList.clear();
+      controller.outputList.add("true");
+    }
+    else{
+      print(false);
+      controller.outputList.clear();
+      controller.outputList.add("false");
+    }
+
+    while (p < pattern.length&& pattern[p]== '*') {
+      p++;
+      return p == pattern;
+    }
+
+
   }
 
   Widget _getPrintNewList() {
     return Obx(() => Padding(
           padding: const EdgeInsets.only(top: 30, left: 20, right: 20),
-          child: Text("New List :-  " + controller.outputList.join()),
+          child: Text("Wildcard Matching is :-  ${controller.outputList.join()}"),
         ));
   }
 }

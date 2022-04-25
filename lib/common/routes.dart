@@ -2,6 +2,7 @@ import 'package:demo_project/UnSort_first_last_position/bindings/UnSort_first_la
 import 'package:demo_project/add_two_sorted_list/bindings/add_two_sorted_list_bindings.dart';
 import 'package:demo_project/ascending_order/bindings/ascending_order_bindings.dart';
 import 'package:demo_project/combinations_of_letter/bindings/combinations_of_letter_bindings.dart';
+import 'package:demo_project/convert_bold_string/bindings/convert_bold_string_bindings.dart';
 import 'package:demo_project/count_duplicate_value/bindings/count_duplicate_value_bindins.dart';
 import 'package:demo_project/count_json_object/bindings/count_json_object_bindins.dart';
 import 'package:demo_project/divide_two_integers/bindings/divide_two_integers_bindings.dart';
@@ -34,6 +35,7 @@ import '../ascending_order/presentation/view/ascending_order_view.dart';
 import '../checked_box/bindings/checked_bindins.dart';
 import '../checked_box/presentation/view/checked_view.dart';
 import '../combinations_of_letter/presentation/view/combinations_of_letter_view.dart';
+import '../convert_bold_string/presentation/view/convert_bold_string_view.dart';
 import '../count_duplicate_value/presentation/view/count_duplicate_value_view.dart';
 import '../count_json_object/presentation/view/count_json_object_view.dart';
 import '../divide_two_integers/presentation/view/divide_two_integers_view.dart';
@@ -54,6 +56,8 @@ import '../remove_node_from_list/presentation/view/remove_node_from_list_view.da
 import '../reverse_nodes/presentation/view/reverse_nodes_view.dart';
 import '../reverse_string/presentation/view/reverse_string_view.dart';
 import '../roman_number/presentation/view/roman_number_view.dart';
+import '../round_scroll/bindings/round_scroll_bindings.dart';
+import '../round_scroll/presentation/view/round_scroll_view.dart';
 import '../social_login/presentation/view/social_login_view.dart';
 import '../stone_weight/presentation/view/stone_weight_view.dart';
 import '../substring_with_concatenation/presentation/view/substring_with_concatenation_view.dart';
@@ -101,6 +105,8 @@ class RouteName {
   static const String subStringWithConcatenationPage = "/SubStringWithConcatenationPage";
   static const String firstMissingPositivePage = "/FirstMissingPositivePage";
   static const String wildcardPage = "/WildcardPage";
+  static const String boldStringPage = "/BoldStringPage";
+  static const String roundScrollPage = "/RoundScrollPage";
 }
 
 class Routes {
@@ -237,5 +243,13 @@ class Routes {
         page: () => WildcardPage(),
         name: RouteName.wildcardPage,
         binding:WildcardBindings()),
+    GetPage(
+        page: () => BoldStringPage(),
+        name: RouteName.boldStringPage,
+        binding:BoldStringBindings()),
+    GetPage(
+        page: () => RoundScrollPage(),
+        name: RouteName.roundScrollPage,
+        binding:RoundScrollBindings()),
   ];
 }

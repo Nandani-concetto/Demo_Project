@@ -41,6 +41,7 @@ dependencies:
   google_sign_in: ^5.2.4
   numerus: ^1.1.1
   stack: ^0.2.1
+  rich_text_controller: ^1.4.0
 
 dev_dependencies:
   flutter_test:

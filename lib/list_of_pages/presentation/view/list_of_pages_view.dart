@@ -197,6 +197,18 @@ class ListOfPage extends GetView<ListOfPagesController> {
                Get.toNamed(RouteName.wildcardPage);
               },
             ),
+            InkWell(
+              child: _getButton("Bold String"),
+              onTap: () {
+               Get.toNamed(RouteName.boldStringPage);
+              },
+            ),
+            InkWell(
+              child: _getButton("Round Scroll"),
+              onTap: () {
+               Get.toNamed(RouteName.roundScrollPage);
+              },
+            ),
             const SizedBox(height: 30)
           ],
         ),
