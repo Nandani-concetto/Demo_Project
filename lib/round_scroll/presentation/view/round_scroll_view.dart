@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import '../controllers/round_scroll_controller.dart';
 import 'dart:math' as math;
 
-const double degrees2Radians = math.pi / 180.0;
-
 class RoundScrollPage extends GetView<RoundScrollController> {
   @override
   Widget build(BuildContext context) {
