@@ -57,7 +57,10 @@ import '../reverse_nodes/presentation/view/reverse_nodes_view.dart';
 import '../reverse_string/presentation/view/reverse_string_view.dart';
 import '../roman_number/presentation/view/roman_number_view.dart';
 import '../round_scroll/bindings/round_scroll_bindings.dart';
+import '../round_scroll/presentation/view/3d_round_scroll.dart';
+import '../round_scroll/presentation/view/horizontal_round_scroll.dart';
 import '../round_scroll/presentation/view/round_scroll_view.dart';
+import '../round_scroll/presentation/view/vertical_round_scroll.dart';
 import '../social_login/presentation/view/social_login_view.dart';
 import '../stone_weight/presentation/view/stone_weight_view.dart';
 import '../substring_with_concatenation/presentation/view/substring_with_concatenation_view.dart';
@@ -107,6 +110,9 @@ class RouteName {
   static const String wildcardPage = "/WildcardPage";
   static const String boldStringPage = "/BoldStringPage";
   static const String roundScrollPage = "/RoundScrollPage";
+  static const String verticalRoundScrollPage = "/VerticalRoundScrollPage";
+  static const String horizontalRoundScrollPage = "/HorizontalRoundScrollPage";
+  static const String threeDRoundScrollPage = "/ThreeDRoundScrollPage";
 }
 
 class Routes {
@@ -250,6 +256,18 @@ class Routes {
     GetPage(
         page: () => RoundScrollPage(),
         name: RouteName.roundScrollPage,
+        binding:RoundScrollBindings()),
+    GetPage(
+        page: () => VerticalRoundScrollPage(),
+        name: RouteName.verticalRoundScrollPage,
+        binding:RoundScrollBindings()),
+    GetPage(
+        page: () => HorizontalRoundScrollPage(),
+        name: RouteName.horizontalRoundScrollPage,
+        binding:RoundScrollBindings()),
+    GetPage(
+        page: () => ThreeDRoundScrollPage(),
+        name: RouteName.threeDRoundScrollPage,
         binding:RoundScrollBindings()),
   ];
 }

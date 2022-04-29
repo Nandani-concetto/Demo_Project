@@ -6,12 +6,12 @@ import 'dart:math' as math;
 
 const double degrees2Radians = math.pi / 180.0;
 
-class RoundScrollPage extends GetView<RoundScrollController> {
+class ThreeDRoundScrollPage extends GetView<RoundScrollController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Round Scroll"),
+        title: Text("3D Round Scroll"),
         centerTitle: true,
         backgroundColor: Colors.grey[700],
       ),
@@ -43,9 +43,9 @@ class RoundScrollPage extends GetView<RoundScrollController> {
         child: Container(
           child: Center(
               child: Text(
-            item,
-            style: TextStyle(color: Colors.white),
-          )),
+                item,
+                style: TextStyle(color: Colors.white),
+              )),
           height: 30,
           width: 30,
           decoration: BoxDecoration(
@@ -68,11 +68,11 @@ class CircularScrollView extends StatefulWidget {
 
   CircularScrollView(this.items,
       {Key? key,
-      this.radius = 100,
-      this.itemMaxHeight = 0,
-      this.itemMaxWidth = 0,
-      this.padding = 0,
-      this.reverse = false})
+        this.radius = 100,
+        this.itemMaxHeight = 0,
+        this.itemMaxWidth = 0,
+        this.padding = 0,
+        this.reverse = false})
       : super(key: key);
 
   @override
@@ -80,8 +80,7 @@ class CircularScrollView extends StatefulWidget {
 }
 
 class _CircularScrollViewState extends State<CircularScrollView> {
-  double? xlastPosition;
-  double? ylastPosition;
+  double? lastPosition;
   List<Widget> transformItems = [];
   double degreesRotated = 0;
 
@@ -100,7 +99,7 @@ class _CircularScrollViewState extends State<CircularScrollView> {
         Transform(
           transform: Matrix4.identity()
             ..translate(
-              (widget.radius) * math.cos(currentAngle),
+              (widget.radius) * math.cos(startAngle),
               (widget.radius) * math.sin(currentAngle),
             ),
           child: widget.items[i],
@@ -110,23 +109,14 @@ class _CircularScrollViewState extends State<CircularScrollView> {
   }
 
   void _calculateScroll(DragUpdateDetails details) {
-    if (xlastPosition == null) {
-      xlastPosition = details.localPosition.dx;
+    if (lastPosition == null) {
+      lastPosition = details.localPosition.dx;
       return;
     }
-    double distance = details.localPosition.dx - xlastPosition!;
+    double distance = details.localPosition.dx - lastPosition!;
     double distanceWithReversal = widget.reverse ? -distance : distance;
-    xlastPosition = details.localPosition.dx;
+    lastPosition = details.localPosition.dx;
     degreesRotated += distanceWithReversal / (widget.radius);
-    _calculateTransformItems();
-    if (ylastPosition == null) {
-      ylastPosition = details.localPosition.dy;
-      return;
-    }
-    double distance1 = details.localPosition.dy - ylastPosition!;
-    double distanceWithReversal1 = widget.reverse ? -distance1 : distance1;
-    ylastPosition = details.localPosition.dy;
-    degreesRotated += distanceWithReversal1 / (widget.radius);
     _calculateTransformItems();
   }
 
@@ -142,8 +132,7 @@ class _CircularScrollViewState extends State<CircularScrollView> {
             _calculateScroll(details);
           }),
           onVerticalDragEnd: (details) {
-            xlastPosition = null;
-            ylastPosition=null;
+            lastPosition = null;
           },
           child: Container(
             height: double.infinity,
