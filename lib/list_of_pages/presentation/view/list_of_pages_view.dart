@@ -206,7 +206,13 @@ class ListOfPage extends GetView<ListOfPagesController> {
             InkWell(
               child: _getButton("Round Scroll"),
               onTap: () {
-               Get.toNamed(RouteName.roundScrollPage);
+               Get.toNamed(RouteName.horizontalRoundScrollPage);
+              },
+            ),
+            InkWell(
+              child: _getButton("Pendulum Animation"),
+              onTap: () {
+               Get.toNamed(RouteName.pendulumAnimationPage);
               },
             ),
             const SizedBox(height: 30)

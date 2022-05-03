@@ -114,7 +114,7 @@ class _CircularScrollViewState extends State<CircularScrollView> {
       return;
     }
     double distance = details.localPosition.dx - lastPosition!;
-    double distanceWithReversal = widget.reverse ? -distance : distance;
+    double distanceWithReversal = widget.reverse ? distance : -distance;
     lastPosition = details.localPosition.dx;
     degreesRotated += distanceWithReversal / (widget.radius);
     _calculateTransformItems();

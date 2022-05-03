@@ -11,6 +11,7 @@ import 'package:demo_project/first_and_last_position/bindings/first_and_last_pos
 import 'package:demo_project/first_missing_positive/bindings/first_missing_positive_bindings.dart';
 import 'package:demo_project/index_of_first_occurrence/bindings/index_of_first_occurrence_bindings.dart';
 import 'package:demo_project/median_of_List/bindings/median_of_List_bindings.dart';
+import 'package:demo_project/pendulum_animation/bindings/pendulum_animation_bindings.dart';
 import 'package:demo_project/remove_element/bindings/remove_element_bindings.dart';
 import 'package:demo_project/reverse_nodes/bindings/reverse_nodes_bindings.dart';
 import 'package:demo_project/reverse_string/bindings/reverse_string_bindins.dart';
@@ -50,6 +51,7 @@ import '../longest_common_prefix/presentation/view/longest_common_prefix_view.da
 import '../median_of_List/presentation/view/median_of_List_view.dart';
 import '../parentheses/bindings/check_parentheses_bindings.dart';
 import '../parentheses/presentation/view/check_parentheses_view.dart';
+import '../pendulum_animation/presentation/view/pendulum_animation_view.dart';
 import '../remove_element/presentation/view/remove_element_view.dart';
 import '../remove_node_from_list/bindings/remove_node_from_list_bindings.dart';
 import '../remove_node_from_list/presentation/view/remove_node_from_list_view.dart';
@@ -113,6 +115,7 @@ class RouteName {
   static const String verticalRoundScrollPage = "/VerticalRoundScrollPage";
   static const String horizontalRoundScrollPage = "/HorizontalRoundScrollPage";
   static const String threeDRoundScrollPage = "/ThreeDRoundScrollPage";
+  static const String pendulumAnimationPage = "/PendulumAnimationPage";
 }
 
 class Routes {
@@ -269,5 +272,9 @@ class Routes {
         page: () => ThreeDRoundScrollPage(),
         name: RouteName.threeDRoundScrollPage,
         binding:RoundScrollBindings()),
+    GetPage(
+        page: () => PendulumAnimationPage(),
+        name: RouteName.pendulumAnimationPage,
+        binding:PendulumAnimationBindings()),
   ];
 }
