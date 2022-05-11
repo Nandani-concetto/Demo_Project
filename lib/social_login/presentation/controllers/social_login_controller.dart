@@ -36,26 +36,26 @@ class SocialLoginController extends SuperController {
     firebaseApp = await Firebase.initializeApp();
   }
 
-  Future<Widget> checkUserLoggedIn() async {
-    if (firebaseApp == null) {
-      await initlizeFirebaseApp();
-    }
-    if (firebaseAuth == null) {
-      firebaseAuth = FirebaseAuth.instance;
-      update();
-    }
-    if (firebaseAuth.currentUser == null) {
-      return SocialLoginPage();
-    } else {
-      firebaseUser = firebaseAuth.currentUser!;
-      update();
-      return Text("HomePage");
-    }
-  }
+  // Future<Widget> checkUserLoggedIn() async {
+  //   if (firebaseApp == null) {
+  //     await initlizeFirebaseApp();
+  //   }
+  //   if (firebaseAuth == null) {
+  //     firebaseAuth = FirebaseAuth.instance;
+  //     update();
+  //   }
+  //   if (firebaseAuth.currentUser == null) {
+  //     return SocialLoginPage();
+  //   } else {
+  //     firebaseUser = firebaseAuth.currentUser!;
+  //     update();
+  //     return Text("HomePage");
+  //   }
+  // }
 
   Future<void> signInWithGoogle() async {
     try {
-      Get.dialog(Center(child: Text("test")), barrierDismissible: false);
+      //Get.dialog(Center(child: Text("test")), barrierDismissible: false);
       await initlizeFirebaseApp();
       firebaseAuth = FirebaseAuth.instance;
       final googleUser = await GoogleSignIn().signIn();
@@ -71,6 +71,7 @@ class SocialLoginController extends SuperController {
       Get.back();
       Get.to(HomePage());
     } catch (ex) {
+      print(ex);
       Get.back();
       Get.snackbar('Sign In Error', 'Error Signing in',
           duration: Duration(seconds: 5),
@@ -83,12 +84,12 @@ class SocialLoginController extends SuperController {
           ));
     }
   }
-  Future<void> signOut() async {
-    // Show loading widget till we sign out
-    Get.dialog(Center(child: Text("abc")), barrierDismissible: false);
-    await firebaseAuth.signOut();
-    Get.back();
-    // Navigate to Login again
-    Get.offAll(SocialLoginPage());
-  }
+  // Future<void> signOut() async {
+  //   // Show loading widget till we sign out
+  //   Get.dialog(Center(child: Text("abc")), barrierDismissible: false);
+  //   await firebaseAuth.signOut();
+  //   Get.back();
+  //   // Navigate to Login again
+  //   Get.offAll(SocialLoginPage());
+  // }
 }

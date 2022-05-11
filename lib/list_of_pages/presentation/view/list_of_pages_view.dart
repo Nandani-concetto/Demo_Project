@@ -17,6 +17,18 @@ class ListOfPage extends GetView<ListOfPagesController> {
       body: SingleChildScrollView(
         child: Column(
           children: [
+            // InkWell(
+            //   child: _getButton("GoogleSignIn"),
+            //   onTap: () {
+            //  Get.toNamed(RouteName.homePage);
+            //   },
+            // ),
+            InkWell(
+              child: _getButton("Socket"),
+              onTap: () {
+             Get.toNamed(RouteName.socketDemoPage);
+              },
+            ),
             InkWell(
               child: _getButton("Reverse"),
               onTap: () {
@@ -212,7 +224,7 @@ class ListOfPage extends GetView<ListOfPagesController> {
             InkWell(
               child: _getButton("Pendulum Animation"),
               onTap: () {
-               Get.toNamed(RouteName.pendulumAnimationPage);
+               Get.toNamed(RouteName.pendulumPage);
               },
             ),
             const SizedBox(height: 30)

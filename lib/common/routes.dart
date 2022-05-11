@@ -10,6 +10,9 @@ import 'package:demo_project/duplicate_number/bindings/duplicate_number_bindings
 import 'package:demo_project/first_and_last_position/bindings/first_and_last_position_bindings.dart';
 import 'package:demo_project/first_missing_positive/bindings/first_missing_positive_bindings.dart';
 import 'package:demo_project/index_of_first_occurrence/bindings/index_of_first_occurrence_bindings.dart';
+import 'package:demo_project/login_with_google/bindings/home_bindings.dart';
+import 'package:demo_project/login_with_google/bindings/login_bindings.dart';
+import 'package:demo_project/login_with_google/bindings/welcome_bindings.dart';
 import 'package:demo_project/median_of_List/bindings/median_of_List_bindings.dart';
 import 'package:demo_project/pendulum_animation/bindings/pendulum_animation_bindings.dart';
 import 'package:demo_project/remove_element/bindings/remove_element_bindings.dart';
@@ -17,6 +20,7 @@ import 'package:demo_project/reverse_nodes/bindings/reverse_nodes_bindings.dart'
 import 'package:demo_project/reverse_string/bindings/reverse_string_bindins.dart';
 import 'package:demo_project/roman_number/bindings/roman_number_bindings.dart';
 import 'package:demo_project/social_login/bindings/social_login_bindins.dart';
+import 'package:demo_project/socket_demo/bindings/socket_demo_bindings.dart';
 import 'package:demo_project/stone_weight/bindings/stone_weight_bindings.dart';
 import 'package:demo_project/substring_with_concatenation/bindings/substring_with_concatenation_bindings.dart';
 import 'package:demo_project/sum_of_pairs/bindings/sum_of_pairs_bindings.dart';
@@ -46,11 +50,15 @@ import '../first_missing_positive/presentation/view/first_missing_positive_view.
 import '../index_of_first_occurrence/presentation/view/index_of_first_occurrence_view.dart';
 import '../list_of_pages/bindings/list_of_pages_bindins.dart';
 import '../list_of_pages/presentation/view/list_of_pages_view.dart';
+import '../login_with_google/presentation/view/home_view.dart';
+import '../login_with_google/presentation/view/login_view.dart';
+import '../login_with_google/presentation/view/welcome_view.dart';
 import '../longest_common_prefix/bindings/longest_common_prefix_bindings.dart';
 import '../longest_common_prefix/presentation/view/longest_common_prefix_view.dart';
 import '../median_of_List/presentation/view/median_of_List_view.dart';
 import '../parentheses/bindings/check_parentheses_bindings.dart';
 import '../parentheses/presentation/view/check_parentheses_view.dart';
+import '../pendulum_animation/presentation/view/Pendulum_view.dart';
 import '../pendulum_animation/presentation/view/pendulum_animation_view.dart';
 import '../remove_element/presentation/view/remove_element_view.dart';
 import '../remove_node_from_list/bindings/remove_node_from_list_bindings.dart';
@@ -64,6 +72,8 @@ import '../round_scroll/presentation/view/horizontal_round_scroll.dart';
 import '../round_scroll/presentation/view/round_scroll_view.dart';
 import '../round_scroll/presentation/view/vertical_round_scroll.dart';
 import '../social_login/presentation/view/social_login_view.dart';
+import '../socket_demo/presentation/view/chat.dart';
+import '../socket_demo/presentation/view/socket_demo_view.dart';
 import '../stone_weight/presentation/view/stone_weight_view.dart';
 import '../substring_with_concatenation/presentation/view/substring_with_concatenation_view.dart';
 import '../sum_of_pair_validation/bindings/sum_of_pair_validation_bindings.dart';
@@ -116,6 +126,12 @@ class RouteName {
   static const String horizontalRoundScrollPage = "/HorizontalRoundScrollPage";
   static const String threeDRoundScrollPage = "/ThreeDRoundScrollPage";
   static const String pendulumAnimationPage = "/PendulumAnimationPage";
+  static const String pendulumPage = "/PendulumPage";
+  static const String socketDemoPage = "/SocketDemoPage";
+  static const String chat = "/Chat";
+  static const String homePage = "/home";
+  static const String loginPage = "/login";
+  static const String welcomePage = "/welcome";
 }
 
 class Routes {
@@ -276,5 +292,29 @@ class Routes {
         page: () => PendulumAnimationPage(),
         name: RouteName.pendulumAnimationPage,
         binding:PendulumAnimationBindings()),
+    GetPage(
+        page: () => PendulumPage(),
+        name: RouteName.pendulumPage,
+        binding:PendulumAnimationBindings()),
+    GetPage(
+        page: () => SocketDemoPage(),
+        name: RouteName.socketDemoPage,
+        binding:SocketBindings()),
+    GetPage(
+        page: () =>  Chat(),
+        name: RouteName.chat,
+        binding:SocketBindings()),
+    GetPage(
+        page: () =>  HomeView(),
+        name: RouteName.homePage,
+        binding:HomeBinding()),
+    GetPage(
+        page: () =>  LoginView(),
+        name: RouteName.loginPage,
+        binding:LoginBinding()),
+    GetPage(
+        page: () =>  WelcomeView(),
+        name: RouteName.welcomePage,
+        binding:WelcomeBinding()),
   ];
 }

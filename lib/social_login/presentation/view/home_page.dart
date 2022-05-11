@@ -3,7 +3,8 @@ import 'package:get/get.dart';
 import '../controllers/social_login_controller.dart';
 
 class HomePage extends GetView<SocialLoginController> {
-final authController= Get.put(SocialLoginController());
+  final authController = Get.put(SocialLoginController());
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,15 +17,24 @@ final authController= Get.put(SocialLoginController());
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text(
-            'Hello ${authController.firebaseUser.displayName}',
+          const Text(
+            "Successfully Login",
             style: TextStyle(
-              fontSize: 30,
+              fontSize: 25,
             ),
           ),
+          Center(
+            child: Text(
+              'Hello ${authController.firebaseUser.displayName}',
+              style: TextStyle(
+                fontSize: 20,
+                color: Colors.blue
+              ),
+            ),
+          ),
+          
         ],
       ),
     );
   }
-
 }
