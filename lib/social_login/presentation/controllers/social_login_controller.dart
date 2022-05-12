@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../view/home_page.dart';
-import '../view/social_login_view.dart';
 
 class SocialLoginController extends SuperController {
   late FirebaseApp firebaseApp;
@@ -35,23 +34,6 @@ class SocialLoginController extends SuperController {
   Future<void> initlizeFirebaseApp() async {
     firebaseApp = await Firebase.initializeApp();
   }
-
-  // Future<Widget> checkUserLoggedIn() async {
-  //   if (firebaseApp == null) {
-  //     await initlizeFirebaseApp();
-  //   }
-  //   if (firebaseAuth == null) {
-  //     firebaseAuth = FirebaseAuth.instance;
-  //     update();
-  //   }
-  //   if (firebaseAuth.currentUser == null) {
-  //     return SocialLoginPage();
-  //   } else {
-  //     firebaseUser = firebaseAuth.currentUser!;
-  //     update();
-  //     return Text("HomePage");
-  //   }
-  // }
 
   Future<void> signInWithGoogle() async {
     try {
@@ -84,12 +66,12 @@ class SocialLoginController extends SuperController {
           ));
     }
   }
-  // Future<void> signOut() async {
-  //   // Show loading widget till we sign out
-  //   Get.dialog(Center(child: Text("abc")), barrierDismissible: false);
-  //   await firebaseAuth.signOut();
-  //   Get.back();
-  //   // Navigate to Login again
-  //   Get.offAll(SocialLoginPage());
-  // }
+// Future<void> signOut() async {
+//   // Show loading widget till we sign out
+//   Get.dialog(Center(child: Text("abc")), barrierDismissible: false);
+//   await firebaseAuth.signOut();
+//   Get.back();
+//   // Navigate to Login again
+//   Get.offAll(SocialLoginPage());
+// }
 }
