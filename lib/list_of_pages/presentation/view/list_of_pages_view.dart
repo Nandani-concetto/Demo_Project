@@ -224,7 +224,7 @@ class ListOfPage extends GetView<ListOfPagesController> {
             InkWell(
               child: _getButton("Pendulum Animation"),
               onTap: () {
-               Get.toNamed(RouteName.pendulumPage);
+               Get.toNamed(RouteName.pendulumAnimationPage);
               },
             ),
             const SizedBox(height: 30)

@@ -15,39 +15,39 @@ class PendulumAnimationPage extends GetView<PendulumAnimationController> {
     );
   }
 
-  // Widget _getPendulum() {
-  //   return Column(
-  //     children: [
-  //       SizedBox(height: 60),
-  //       Center(
-  //         child: Container(
-  //           width: 250,
-  //           height: 20,
-  //           color: Colors.blueGrey,
-  //         ),
-  //       ),
-  //       Stack(
-  //         alignment: Alignment.center,
-  //         children: [
-  //           Container(
-  //             width: 20,
-  //             height: 250,
-  //             color: Colors.blueGrey,
-  //           ),
-  //           Padding(
-  //             padding: const EdgeInsets.only(top: 200),
-  //             child: Container(
-  //               height: 50,
-  //               width: 50,
-  //               decoration: BoxDecoration(
-  //                   shape: BoxShape.circle, color: Colors.blueGrey),
-  //             ),
-  //           ),
-  //         ],
-  //       ),
-  //     ],
-  //   );
-  // }
+// Widget _getPendulum() {
+//   return Column(
+//     children: [
+//       SizedBox(height: 60),
+//       Center(
+//         child: Container(
+//           width: 250,
+//           height: 20,
+//           color: Colors.blueGrey,
+//         ),
+//       ),
+//       Stack(
+//         alignment: Alignment.center,
+//         children: [
+//           Container(
+//             width: 20,
+//             height: 250,
+//             color: Colors.blueGrey,
+//           ),
+//           Padding(
+//             padding: const EdgeInsets.only(top: 200),
+//             child: Container(
+//               height: 50,
+//               width: 50,
+//               decoration: BoxDecoration(
+//                   shape: BoxShape.circle, color: Colors.blueGrey),
+//             ),
+//           ),
+//         ],
+//       ),
+//     ],
+//   );
+// }
 }
 
 class HomeScreen extends StatefulWidget {
@@ -60,6 +60,7 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
   Animation<double>? animation;
+  double? test;
   late AnimationController animationController;
 
   HomeScreenState();
@@ -84,12 +85,14 @@ class HomeScreenState extends State<HomeScreen>
   Widget build(BuildContext context) {
     animation =
         CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
-    animation = Tween(begin: -0.3, end: 0.3).animate(animation!);
-
+    animation = Tween(begin: -0.2, end: 0.2).animate(animation!);
+    print("Test:- $animation");
     return Scaffold(
       body: Column(
         children: [
-          SizedBox(height: 50,),
+          SizedBox(
+            height: 50,
+          ),
           Stack(
             alignment: Alignment.topCenter,
             children: <Widget>[
@@ -117,25 +120,33 @@ class HomeScreenState extends State<HomeScreen>
                             height: 50,
                             width: 50,
                             decoration: BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.blueGrey),
+                                shape: BoxShape.circle, color: Colors.blueGrey),
                           ),
                         ),
                       ],
                     )),
               ),
-
             ],
           ),
           Padding(
-            padding: const EdgeInsets.only(left: 20,right: 20,top: 50),
+            padding: const EdgeInsets.only(left: 20, right: 20, top: 50),
             child: Row(
               children: [
                 Container(
                   width: 120,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.black54),
-                    onPressed: (){
+                    onPressed: () {
+                      // animationController.reset();
+                      test = animation!.value;
+                      print("Last value : $test");
+                      setState(() {
+                        animation = CurvedAnimation(
+                            parent: animationController,
+                            curve: Curves.easeInOut);
+                        animation =
+                            Tween(begin: test, end: 0.0).animate(animation!);
+                      });
                       animationController.stop();
                     },
                     child: Text("Stop"),
@@ -146,7 +157,7 @@ class HomeScreenState extends State<HomeScreen>
                   width: 120,
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.black54),
-                    onPressed: (){
+                    onPressed: () {
                       animationController.forward();
                     },
                     child: Text("ReStart"),
