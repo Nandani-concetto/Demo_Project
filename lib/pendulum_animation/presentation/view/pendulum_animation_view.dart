@@ -69,23 +69,36 @@ class HomeScreenState extends State<HomeScreen>
   void initState() {
     super.initState();
     animationController =
-        AnimationController(vsync: this, duration: Duration(seconds: 1));
+        AnimationController(vsync: this, duration: Duration(seconds: 2));
     animationController.addListener(() {
       if (animationController.isCompleted) {
+        //animationController.forward();
         animationController.reverse();
-      } else if (animationController.isDismissed) {
+        animationController.repeat();
+        print("Nandu");
+      }
+      if (animationController.isDismissed) {
         animationController.forward();
       }
       setState(() {});
     });
     animationController.forward();
+    animation =
+        CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
+    animation = TweenSequence(<TweenSequenceItem<double>>[
+      TweenSequenceItem<double>(
+          tween: Tween<double>(begin: 0.0, end: 0.3), weight: 0.1),
+      TweenSequenceItem<double>(
+          tween: Tween<double>(begin: 0.0, end: -0.3), weight: 0.1),
+      // TweenSequenceItem<double>(
+      //     tween: Tween<double>(begin: -0.3, end: 0.0), weight: 0.1)
+    ]).animate(animation!);
+
+    //Tween(begin: -0.3, end: 0.3).animate(animation!);
   }
 
   @override
   Widget build(BuildContext context) {
-    animation =
-        CurvedAnimation(parent: animationController, curve: Curves.easeInOut);
-    animation = Tween(begin: -0.2, end: 0.2).animate(animation!);
     print("Test:- $animation");
     return Scaffold(
       body: Column(
@@ -137,16 +150,16 @@ class HomeScreenState extends State<HomeScreen>
                   child: ElevatedButton(
                     style: ElevatedButton.styleFrom(primary: Colors.black54),
                     onPressed: () {
-                      // animationController.reset();
-                      test = animation!.value;
-                      print("Last value : $test");
-                      setState(() {
-                        animation = CurvedAnimation(
-                            parent: animationController,
-                            curve: Curves.easeInOut);
-                        animation =
-                            Tween(begin: test, end: 0.0).animate(animation!);
-                      });
+                      animationController.reset();
+                      // test = animation!.value;
+                      // print("Last value : $test");
+                      // setState(() {
+                      //   animation = CurvedAnimation(
+                      //       parent: animationController,
+                      //       curve: Curves.easeInOut);
+                      //   animation =
+                      //       Tween(begin: test, end: 0.0).animate(animation!);
+                      // });
                       animationController.stop();
                     },
                     child: Text("Stop"),

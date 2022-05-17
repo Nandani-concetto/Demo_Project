@@ -47,6 +47,8 @@ import '../divide_two_integers/presentation/view/divide_two_integers_view.dart';
 import '../duplicate_number/presentation/view/duplicate_number_view.dart';
 import '../first_and_last_position/presentation/view/first_and_last_position_view.dart';
 import '../first_missing_positive/presentation/view/first_missing_positive_view.dart';
+import '../heart_animation/bindings/heart_animation_bindings.dart';
+import '../heart_animation/presentation/view/heart_animation_view.dart';
 import '../index_of_first_occurrence/presentation/view/index_of_first_occurrence_view.dart';
 import '../list_of_pages/bindings/list_of_pages_bindins.dart';
 import '../list_of_pages/presentation/view/list_of_pages_view.dart';
@@ -132,6 +134,7 @@ class RouteName {
   static const String homePage = "/home";
   static const String loginPage = "/login";
   static const String welcomePage = "/welcome";
+  static const String heartAnimationPage = "/HeartAnimationPage";
 }
 
 class Routes {
@@ -316,5 +319,9 @@ class Routes {
         page: () =>  WelcomeView(),
         name: RouteName.welcomePage,
         binding:WelcomeBinding()),
+    GetPage(
+        page: () =>  HeartAnimationPage(),
+        name: RouteName.heartAnimationPage,
+        binding:HeartAnimationBindings()),
   ];
 }

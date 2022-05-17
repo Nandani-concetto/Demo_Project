@@ -24,6 +24,17 @@ class ListOfPage extends GetView<ListOfPagesController> {
             //   },
             // ),
             InkWell(
+              child: _getButton("Heart Animation"),
+              onTap: () {
+                Get.toNamed(RouteName.heartAnimationPage);
+              },
+            ),InkWell(
+              child: _getButton("Pendulum Animation"),
+              onTap: () {
+                Get.toNamed(RouteName.pendulumAnimationPage);
+              },
+            ),
+            InkWell(
               child: _getButton("Socket"),
               onTap: () {
              Get.toNamed(RouteName.socketDemoPage);
@@ -221,12 +232,7 @@ class ListOfPage extends GetView<ListOfPagesController> {
                Get.toNamed(RouteName.horizontalRoundScrollPage);
               },
             ),
-            InkWell(
-              child: _getButton("Pendulum Animation"),
-              onTap: () {
-               Get.toNamed(RouteName.pendulumAnimationPage);
-              },
-            ),
+
             const SizedBox(height: 30)
           ],
         ),
